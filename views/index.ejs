@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="/css/HomePage.css">
+
+
+    <link rel="icon" href="Favicon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <title>Lap Trinh Nang Cao</title>
+</head>
+
+<body>
+
+
+
+    <main class="login-form">
+        <div class="cotainer">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h1>Xem Điểm</h1>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group row">
+                                    <label for="email_address"
+                                        class="col-md-4 col-form-label text-md-right">MSSV</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="MSSV" name="MSSV" required autofocus>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="source" class="col-md-4 col-form-label text-md-right">Mã Môn
+                                        Học</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="source" name="source" required>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="button" class="btn btn-primary button">
+                                        Xem Điểm
+                                    </button>
+                                </div>
+
+
+                            </form>
+                        </div>
+
+                        <div class="showScores text-center insertData">
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+
+
+
+
+    <!-- vì file này sẽ được chạy ở index.js -->
+    <!-- mà index.js cài đặt static là :public  -->
+    <!-- nên bỏ qua public -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/HomePage.js"></script>
+
+
+
+</body>
+
+</html>
