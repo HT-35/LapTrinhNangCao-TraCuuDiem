@@ -3,7 +3,7 @@ const { Sequelize } = require("sequelize");
 const connectDB = async () => {
   try {
     // databaseName + tk + password
-    const sequelize = new Sequelize("testDB", "root", "huyA@0123", {
+    const sequelize = new Sequelize("laptrinhnangcao", "root", "huyA@0123", {
       host: "127.0.0.1",
       dialect: "mysql",
       logging: false,

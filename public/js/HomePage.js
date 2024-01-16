@@ -9,22 +9,44 @@ button.addEventListener("click", async () => {
   console.log("MSSV:  ", MSSV.value);
   console.log("source:   ", source.value);
 
-  const response = await axios.post("/", {
-    MSSV: MSSV.value,
-    Course: source.value,
-  });
-  const data = response.data;
-  const { MssvStudent, NameStudent } = data.MSSVofstudent;
-  const { subject } = data.subjectofstudent;
-  const { Scores } = data;
+  // const response = await axios.post(
+  //   "/",
+  //   {
+  //     MSSV: MSSV.value,
+  //     Course: source.value,
+  //   },
+  //   { validateStatus: false }
+  // );
 
-  console.log({ MssvStudent, NameStudent });
-  console.log({ subject });
-  console.log({ Scores });
+  try {
+    const response = await fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        MSSV: MSSV.value,
+        Course: source.value,
+      }),
+    });
+    console.log(response);
+    // const data = await response.data.data;
+    const data = await response.json();
+    console.log(data);
 
-  //   console.log(data);
+    if (data.status == false) {
+      return (insertData.innerHTML = data.data);
+    }
 
-  const template = `       
+    const { MssvStudent, NameStudent } = data.data.MSSVofstudent;
+    const { subject } = data.data.subjectofstudent;
+    const { Scores } = data.data;
+
+    console.log({ MssvStudent, NameStudent });
+    console.log({ subject });
+    console.log({ Scores });
+
+    const template = `
                             <div class="row border border-bottom">
                                 <div class="col-md-3 py-2 border-right">Họ Và Tên</div>
                                 <div class="col-md-3 py-2  border-right">MSSV</div>
@@ -39,5 +61,8 @@ button.addEventListener("click", async () => {
                             </div>
                         `;
 
-  insertData.innerHTML = template;
+    insertData.innerHTML = template;
+  } catch (error) {
+    insertData.innerHTML = error;
+  }
 });

@@ -7,9 +7,9 @@ const createStudentController = async (req, res) => {
   };
   const SV2 = {
     NameStudent: "Nguyen Van   A",
-    MssvStudent: 22222222,
+    MssvStudent: 123456,
   };
-  // const CreateStudent = await SinhVien.create(SV);
+  // const CreateStudent = await SinhVien.create(SV2);
   // console.log(CreateStudent);
 
   //======================================
@@ -45,6 +45,7 @@ const createStudentController = async (req, res) => {
   const CreateStudent = await Student_Source.findOne({
     where: {
       MssvStudent: id,
+      IdSubject: 111,
     },
     include: [
       {
