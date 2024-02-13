@@ -11,7 +11,7 @@ const handleScores = async (req, res) => {
   try {
     if (MSSV && Course) {
       try {
-        console.log({ MSSV, Course });
+        // console.log({ MSSV, Course });
         const findProductDetail = await Student_Source.findOne({
           where: {
             MssvStudent: MSSV,
@@ -29,7 +29,7 @@ const handleScores = async (req, res) => {
           ],
         });
 
-        console.log("scores", findProductDetail);
+        // console.log("scores", findProductDetail);
         if (findProductDetail == null) {
           return res.status(200).json({ status: false, data: "Not Found !!" });
         }

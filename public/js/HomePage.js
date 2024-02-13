@@ -6,8 +6,8 @@ const insertData = document.querySelector(".insertData");
 // console.log(source);
 
 button.addEventListener("click", async () => {
-  console.log("MSSV:  ", MSSV.value);
-  console.log("source:   ", source.value);
+  // console.log("MSSV:  ", MSSV.value);
+  // console.log("source:   ", source.value);
 
   // const response = await axios.post(
   //   "/",
@@ -29,22 +29,22 @@ button.addEventListener("click", async () => {
         Course: source.value,
       }),
     });
-    console.log(response);
+    // console.log(response);
     // const data = await response.data.data;
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     if (data.status == false) {
       return (insertData.innerHTML = data.data);
     }
 
     const { MssvStudent, NameStudent } = data.data.MSSVofstudent;
-    const { subject } = data.data.subjectofstudent;
+    const { IdSubject } = data.data;
     const { Scores } = data.data;
 
-    console.log({ MssvStudent, NameStudent });
-    console.log({ subject });
-    console.log({ Scores });
+    // console.log({ MssvStudent, NameStudent });
+    // console.log({ IdSubject });
+    // console.log({ Scores });
 
     const template = `
                             <div class="row border border-bottom">
@@ -56,7 +56,7 @@ button.addEventListener("click", async () => {
                             <div class="row border border-bottom  ">
                                 <div class="col-md-3 border-right">${MssvStudent}</div>
                                 <div class="col-md-3 border-right">${NameStudent}</div>
-                                <div class="col-md-3 border-right">${subject}</div>
+                                <div class="col-md-3 border-right">${IdSubject}</div>
                                 <div class="col-md-3">${Scores}</div>
                             </div>
                         `;
