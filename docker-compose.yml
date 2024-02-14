@@ -1,0 +1,58 @@
+version: "3"
+
+services:
+  # Định nghĩa dịch vụ MySQL
+  mysql:
+    # Sử dụng ảnh MySQL phiên bản 8.0
+    image: mysql:8.0
+
+    ports:
+      - 3308:3306
+    # Mount một volume để lưu trữ dữ liệu MySQL
+    volumes:
+      - laptrinhnangcao:/var/lib/mysql
+    # Thiết lập biến môi trường cho MySQL
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: laptrinhnangcao
+    # Đặt tên cho service để dễ dàng truy cập từ service khác trong cùng network
+    container_name: mysql
+    # Định cấu hình mạng cho MySQL service
+    networks:
+      - mynetwork
+
+  # Định nghĩa dịch vụ ứng dụng Node.js
+  app:
+    # Sử dụng ảnh Node.js phiên bản 21 trên Alpine Linux
+    image: node:21-alpine3.18
+
+    # Lệnh được thực thi khi container khởi động
+    command: sh -c "npm install && sleep 5  && npx sequelize db:migrate   && npm run dev"
+    # Ánh xạ cổng 3000 của container tới cổng 3000 của máy host
+    ports:
+      - 127.0.0.1:3000:3000
+    # Thiết lập thư mục làm việc trong container
+    working_dir: /app
+    # Mount thư mục hiện tại của máy host vào thư mục /app trong container
+    volumes:
+      - ./:/app
+    # Thiết lập biến môi trường cho kết nối đến MySQL
+    environment:
+      MYSQL_HOST: mysql # Sửa đổi địa chỉ host MySQL
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: laptrinhnangcao
+    # Đặt tên cho service để dễ dàng truy cập từ service khác trong cùng network
+    container_name: app
+    # Định cấu hình mạng cho app service
+    networks:
+      - mynetwork
+
+# Định nghĩa một volume với tên laptrinhnangcao
+volumes:
+  laptrinhnangcao:
+
+# Định nghĩa network
+networks:
+  mynetwork:

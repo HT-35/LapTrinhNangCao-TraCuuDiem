@@ -9,8 +9,10 @@ const createStudentController = async (req, res) => {
     NameStudent: "Nguyen Van   A",
     MssvStudent: 123456,
   };
-  const CreateStudent = await SinhVien.create(SV);
-  res.status(201).json({ CreateStudent });
+  const CreateStudent1 = await SinhVien.create(SV);
+  const CreateStudent2 = await SinhVien.create(SV2);
+
+  res.status(201).json({ CreateStudent1, CreateStudent2 });
 };
 
 const Create_Source_Controller = async (req, res) => {
@@ -25,10 +27,11 @@ const Create_Source_Controller = async (req, res) => {
       IdSubject: 222,
       Scores: 10,
     };
+    const Create_StudentSource1 = await Source.create(SS);
 
-    const Create_StudentSource = await Source.create(SS2);
+    const Create_StudentSource2 = await Source.create(SS2);
 
-    res.status(201).json({ Create_StudentSource });
+    res.status(201).json({ Create_StudentSource1, Create_StudentSource2 });
   } catch (error) {
     res.status(404).json({ error });
   }
@@ -46,9 +49,11 @@ const create_Student_Course = async (req, res) => {
     Scores: 10,
   };
 
-  const CreateStudent = await Student_Source.create(SS2);
+  const CreateStudent1 = await Student_Source.create(SS);
 
-  res.status(201).json({ CreateStudent });
+  const CreateStudent2 = await Student_Source.create(SS2);
+
+  res.status(201).json({ CreateStudent1, CreateStudent2 });
 };
 
 const findOneStudentCourse = async (req, res) => {

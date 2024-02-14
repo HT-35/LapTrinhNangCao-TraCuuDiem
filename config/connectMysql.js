@@ -4,9 +4,10 @@ const connectDB = async () => {
   try {
     // databaseName + tk + password
     const sequelize = new Sequelize("laptrinhnangcao", "root", "secret", {
-      host: "127.0.0.1",
+      // host: "mysql" sẽ ánh xạ đến container của mysql
+      host: "mysql",
       dialect: "mysql",
-      port: 3308,
+      port: 3306,
       logging: false,
     });
 

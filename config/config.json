@@ -3,9 +3,9 @@
     "username": "root",
     "password": "secret",
     "database": "laptrinhnangcao",
-    "host": "127.0.0.1",
+    "host": "mysql",
     "dialect": "mysql",
-    "port": 3308,
+    "port": 3306,
     "logging": false,
     "timezone": "+07:00"
   },

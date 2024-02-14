@@ -1,3 +1,4 @@
+
 "use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -30,6 +31,7 @@ module.exports = {
       await queryInterface.addIndex("Sources", ["IdSubject"]);
     }
 
+    
     // Thêm chỉ mục cho cột MssvStudent trong bảng sinhviens
     await queryInterface.addIndex("SinhViens", ["MssvStudent"]);
 
