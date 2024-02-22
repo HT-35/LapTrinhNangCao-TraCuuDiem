@@ -22,5 +22,5 @@ app.set("view engine", "ejs");
 app.use("/", root);
 
 app.listen(port, () => {
-  console.log("server run on :  http://localhost:5000/");
+  console.log("server run on :  http://localhost:3000/");
 });
